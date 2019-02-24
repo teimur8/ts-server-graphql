@@ -1,23 +1,28 @@
 {
-   "name": "project",
-   "version": "0.0.1",
-   "description": "Awesome project developed with TypeORM.",
-   "devDependencies": {
-      "@types/node": "^11.9.5",
-      "cross-env": "^5.2.0",
-      "nodemon": "^1.18.10",
-      "ts-node": "8.0.2",
-      "tslint": "^5.13.0",
-      "tslint-config-prettier": "^1.18.0",
-      "typescript": "3.3.3333"
-   },
-   "dependencies": {
-      "graphql-yoga": "^1.17.4",
-      "pg": "^7.8.1",
-      "reflect-metadata": "^0.1.13",
-      "typeorm": "0.2.13"
-   },
-   "scripts": {
-      "start": "nodemon --exec ts-node src/index.ts"
-   }
+  "name": "project",
+  "version": "0.0.1",
+  "description": "Awesome project developed with TypeORM.",
+  "devDependencies": {
+    "@types/node": "^11.9.5",
+    "@types/uuid": "^3.4.4",
+    "cross-env": "^5.2.0",
+    "gql2ts": "^1.10.1",
+    "nodemon": "^1.18.10",
+    "ts-node": "8.0.2",
+    "tslint": "^5.13.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "3.3.3333"
+  },
+  "dependencies": {
+    "graphql-import": "^0.7.1",
+    "graphql-yoga": "^1.17.4",
+    "pg": "^7.8.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "0.2.13",
+    "uuid": "^3.3.2"
+  },
+  "scripts": {
+    "start": "nodemon --exec ts-node --files src/index.ts",
+    "gen-schema-types": "gql2ts src/schema.graphql -o src/types/schema.d.ts"
+  }
 }
