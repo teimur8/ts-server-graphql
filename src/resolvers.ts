@@ -1,4 +1,6 @@
 import { ResolverMap } from "./types/graphql-util";
+import * as bcrypt from "bcryptjs";
+import { User } from "./entity/User";
 
 export const resolvers: ResolverMap = {
   Query: {
@@ -6,6 +8,18 @@ export const resolvers: ResolverMap = {
       `Hello ${name || "World"}`
   },
   Mutation: {
-    register: (_, {  }: GQL.IRegisterOnMutationArguments) => {}
+    register: async (
+      _,
+      { email, password }: GQL.IRegisterOnMutationArguments
+    ) => {
+      let passwordHash = await bcrypt.hash(password, 10);
+
+      await User.create({
+        email,
+        password: passwordHash
+      }).save();
+
+      return true;
+    }
   }
 };
